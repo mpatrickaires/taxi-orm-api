@@ -4,7 +4,7 @@ using TaxiOrmApi.Services.Interfaces;
 
 namespace TaxiOrmApi.Services
 {
-    public class FabricanteService : ServiceBase<Fabricante>, IFabricanteService
+    public class FabricanteService : ServiceBase<Fabricante, FabricanteValidator>, IFabricanteService
     {
         public FabricanteService(IFabricanteRepository repository) : base(repository)
         {

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FluentValidation;
+using Microsoft.AspNetCore.Mvc;
 using TaxiOrmApi.Models;
 using TaxiOrmApi.Services.Interfaces;
 
@@ -40,8 +41,16 @@ namespace TaxiOrmApi.Controllers
         {
             if (_service.ObterPorId(entity.Id) != null) return RegistroJaCadastrado();
 
-            _service.Inserir(entity);
-            return CreatedAtAction(nameof(Post), new { id = entity.Id });
+            try
+            {
+                _service.Inserir(entity);
+                return CreatedAtAction(nameof(Post), new { id = entity.Id }, entity);
+            }
+            catch (ValidationException e)
+            {
+                return BadRequest(e.Errors);
+                throw;
+            }
         }
 
         [HttpPut("{id}")]
@@ -49,15 +58,22 @@ namespace TaxiOrmApi.Controllers
         {
             entity.Id = id;
 
-            if (_service.ObterPorId(id) != null)
+            try
             {
-                _service.Atualizar(entity);
-                return NoContent();
+                if (_service.ObterPorId(id) != null)
+                {
+                    _service.Atualizar(entity);
+                    return NoContent();
+                }
+
+                _service.Inserir(entity);
+                return CreatedAtAction(nameof(Put), new { id = entity.Id }, entity);
             }
-
-            _service.Inserir(entity);
-
-            return CreatedAtAction(nameof(Put), new { id = entity.Id }, entity);
+            catch (ValidationException e)
+            {
+                return BadRequest(e.Errors);
+                throw;
+            }
         }
 
         [HttpDelete("{id}")]

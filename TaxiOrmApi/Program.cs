@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using TaxiOrmApi.Context;
 using TaxiOrmApi.Models;
+using TaxiOrmApi.Models.Validator;
 using TaxiOrmApi.Repositories;
 using TaxiOrmApi.Repositories.Interfaces;
 using TaxiOrmApi.Services;
@@ -21,7 +22,7 @@ builder.Services.AddScoped<DbContext, AppDbContext>();
 
 // Base Services
 builder.Services.AddScoped<IRepositoryBase<Entity>, RepositoryBase<Entity>>();
-builder.Services.AddScoped<IServiceBase<Entity>, ServiceBase<Entity>>();
+builder.Services.AddScoped<IServiceBase<Entity>, ServiceBase<Entity, ValidatorBase<Entity>>>();
 
 // Specialized Services
 builder.Services.AddScoped<IFabricanteRepository, FabricanteRepository>();

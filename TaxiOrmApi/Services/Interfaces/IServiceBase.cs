@@ -11,5 +11,6 @@ namespace TaxiOrmApi.Services.Interfaces
         void Inserir(TEntity entity);
         void Atualizar(TEntity entity);
         void Deletar(TEntity entity);
+        void Validar(TEntity entity);
     }
 }
