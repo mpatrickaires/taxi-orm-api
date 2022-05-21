@@ -26,7 +26,7 @@ namespace TaxiOrmApi.Controllers
         }
 
         [HttpGet("{id}")]
-        public IActionResult Get(Guid id)
+        public IActionResult Get(int id)
         {
             var entity = _service.ObterPorId(id);
 
@@ -45,7 +45,7 @@ namespace TaxiOrmApi.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Put(Guid id, [FromBody] TEntity entity)
+        public IActionResult Put(int id, [FromBody] TEntity entity)
         {
             entity.Id = id;
 
@@ -61,7 +61,7 @@ namespace TaxiOrmApi.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete(Guid id)
+        public IActionResult Delete(int id)
         {
             var entity = _service.ObterPorId(id);
 

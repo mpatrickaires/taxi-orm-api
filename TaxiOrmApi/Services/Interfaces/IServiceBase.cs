@@ -6,7 +6,7 @@ namespace TaxiOrmApi.Services.Interfaces
     public interface IServiceBase<TEntity> where TEntity : Entity
     {
         IEnumerable<TEntity> ObterTodos();
-        TEntity ObterPorId(Guid id);
+        TEntity ObterPorId(int id);
         IEnumerable<TEntity> ObterTodosPorExpressao(Expression<Func<TEntity, bool>> expression);
         void Inserir(TEntity entity);
         void Atualizar(TEntity entity);

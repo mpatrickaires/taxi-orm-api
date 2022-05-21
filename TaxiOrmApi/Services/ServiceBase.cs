@@ -1,5 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using System.Linq.Expressions;
+﻿using System.Linq.Expressions;
 using TaxiOrmApi.Models;
 using TaxiOrmApi.Repositories.Interfaces;
 using TaxiOrmApi.Services.Interfaces;
@@ -15,7 +14,7 @@ namespace TaxiOrmApi.Services
             _repository = repository;
         }
 
-        public virtual TEntity ObterPorId(Guid id)
+        public virtual TEntity ObterPorId(int id)
         {
             return _repository.ObterPorId(id);
         }

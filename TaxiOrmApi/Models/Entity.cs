@@ -5,6 +5,6 @@ namespace TaxiOrmApi.Models
     public abstract class Entity
     {
         [Key]
-        public Guid Id { get; set; }
+        public int Id { get; set; }
     }
 }

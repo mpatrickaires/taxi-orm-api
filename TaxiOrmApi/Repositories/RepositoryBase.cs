@@ -16,7 +16,7 @@ namespace TaxiOrmApi.Repositories
             Set = _context.Set<TEntity>();
         }
 
-        public virtual TEntity ObterPorId(Guid id)
+        public virtual TEntity ObterPorId(int id)
         {
             return Set.AsNoTracking().FirstOrDefault(e => e.Id == id);
         }
