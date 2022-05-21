@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
+using TaxiOrmApi.Controllers.CustomResponses;
 using TaxiOrmApi.Models;
 using TaxiOrmApi.Services.Interfaces;
 
@@ -21,7 +22,7 @@ namespace TaxiOrmApi.Controllers
         {
             var entities = _service.ObterTodos();
 
-            if (entities == null || !entities.Any()) return RegistroNaoEncontrado();
+            if (entities == null || !entities.Any()) return CustomResponse.RegistroNaoEncontrado();
 
             return Ok(entities);
         }
@@ -31,7 +32,7 @@ namespace TaxiOrmApi.Controllers
         {
             var entity = _service.ObterPorId(id);
 
-            if (entity == null) return RegistroNaoEncontrado();
+            if (entity == null) return CustomResponse.RegistroNaoEncontrado();
 
             return Ok(_service.ObterPorId(id));
         }
@@ -39,7 +40,7 @@ namespace TaxiOrmApi.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] TEntity entity)
         {
-            if (_service.ObterPorId(entity.Id) != null) return RegistroJaCadastrado();
+            if (_service.ObterPorId(entity.Id) != null) return CustomResponse.RegistroJaCadastrado();
 
             try
             {
@@ -81,24 +82,10 @@ namespace TaxiOrmApi.Controllers
         {
             var entity = _service.ObterPorId(id);
 
-            if (entity == null) return RegistroNaoEncontrado();
+            if (entity == null) return CustomResponse.RegistroNaoEncontrado();
 
             _service.Deletar(entity);
             return NoContent();
-        }
-
-        protected ContentResult RegistroNaoEncontrado(string message = "Registro não encontrado.")
-        {
-            var response = Content(message);
-            response.StatusCode = StatusCodes.Status404NotFound;
-            return response;
-        }
-
-        protected ContentResult RegistroJaCadastrado(string message = "Registro já cadastrado.")
-        {
-            var response = Content(message);
-            response.StatusCode = StatusCodes.Status409Conflict;
-            return response;
         }
     }
 }
