@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using TaxiOrmApi.Models;
+using TaxiOrmApi.Models.FabricanteModel;
 using TaxiOrmApi.Services.Interfaces;
 
 namespace TaxiOrmApi.Controllers

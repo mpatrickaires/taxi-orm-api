@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using TaxiOrmApi.Context;
 using TaxiOrmApi.Models;
-using TaxiOrmApi.Models.Validator;
 using TaxiOrmApi.Repositories;
 using TaxiOrmApi.Repositories.Interfaces;
 using TaxiOrmApi.Services;
@@ -12,7 +11,11 @@ var configuration = builder.Configuration;
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddNewtonsoftJson(options =>
+        options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+    );
+
 builder.Services.AddDbContext<AppDbContext>(options => options
         .UseNpgsql(configuration.GetConnectionString("TaxiOrmApi"))
         .UseSnakeCaseNamingConvention()
@@ -26,7 +29,7 @@ builder.Services.AddScoped<DbContext, AppDbContext>();
 
 // Base Services
 builder.Services.AddScoped<IRepositoryBase<Entity>, RepositoryBase<Entity>>();
-builder.Services.AddScoped<IServiceBase<Entity>, ServiceBase<Entity, ValidatorBase<Entity>>>();
+builder.Services.AddScoped<IServiceBase<Entity>, ServiceBase<Entity>>();
 
 // Specialized Services
 builder.Services.AddScoped<IFabricanteRepository, FabricanteRepository>();

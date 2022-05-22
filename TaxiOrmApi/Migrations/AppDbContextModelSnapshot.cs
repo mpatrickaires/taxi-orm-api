@@ -32,7 +32,8 @@ namespace TaxiOrmApi.Migrations
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasColumnType("text")
+                        .HasMaxLength(80)
+                        .HasColumnType("character varying(80)")
                         .HasColumnName("nome");
 
                     b.HasKey("Id")
@@ -56,7 +57,8 @@ namespace TaxiOrmApi.Migrations
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasColumnType("text")
+                        .HasMaxLength(80)
+                        .HasColumnType("character varying(80)")
                         .HasColumnName("nome");
 
                     b.HasKey("Id")

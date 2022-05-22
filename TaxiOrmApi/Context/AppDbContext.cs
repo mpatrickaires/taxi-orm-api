@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using TaxiOrmApi.Models;
+using TaxiOrmApi.Context.EntityConfigurations;
+using TaxiOrmApi.Models.FabricanteModel;
 
 namespace TaxiOrmApi.Context
 {
@@ -11,9 +12,7 @@ namespace TaxiOrmApi.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Modelo>()
-                .HasOne(m => m.Fabricante)
-                .WithMany(f => f.Modelos);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(FabricanteEntityTypeConfiguration).Assembly);
 
             foreach (var relacao in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
             {

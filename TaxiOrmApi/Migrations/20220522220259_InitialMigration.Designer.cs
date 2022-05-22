@@ -11,7 +11,7 @@ using TaxiOrmApi.Context;
 namespace TaxiOrmApi.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220522020535_InitialMigration")]
+    [Migration("20220522220259_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,7 +34,8 @@ namespace TaxiOrmApi.Migrations
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasColumnType("text")
+                        .HasMaxLength(80)
+                        .HasColumnType("character varying(80)")
                         .HasColumnName("nome");
 
                     b.HasKey("Id")
@@ -58,7 +59,8 @@ namespace TaxiOrmApi.Migrations
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasColumnType("text")
+                        .HasMaxLength(80)
+                        .HasColumnType("character varying(80)")
                         .HasColumnName("nome");
 
                     b.HasKey("Id")

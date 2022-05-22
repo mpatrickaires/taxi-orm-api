@@ -1,12 +1,12 @@
-﻿using FluentValidation;
-using System.Linq.Expressions;
+﻿using System.Linq.Expressions;
 using TaxiOrmApi.Models;
+using TaxiOrmApi.Models.Interfaces;
 using TaxiOrmApi.Repositories.Interfaces;
 using TaxiOrmApi.Services.Interfaces;
 
 namespace TaxiOrmApi.Services
 {
-    public class ServiceBase<TEntity, TEntityValidator> : IServiceBase<TEntity> where TEntity : Entity where TEntityValidator : AbstractValidator<TEntity>, new()
+    public class ServiceBase<TEntity> : IServiceBase<TEntity> where TEntity : Entity
     {
         protected IRepositoryBase<TEntity> _repository;
 
@@ -59,9 +59,11 @@ namespace TaxiOrmApi.Services
 
         public virtual void Validar(TEntity entity)
         {
-            var validador = new TEntityValidator();
+            if (entity is not IEntityValidator) return;
 
-            validador.ValidateAndThrow(entity);
+            var entityValidator = entity as IEntityValidator;
+
+            entityValidator.Validar();
         }
     }
 }

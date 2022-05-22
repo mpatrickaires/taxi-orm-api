@@ -50,7 +50,10 @@ namespace TaxiOrmApi.Controllers
             catch (ValidationException e)
             {
                 return BadRequest(e.Errors);
-                throw;
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e);
             }
         }
 

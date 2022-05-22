@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using TaxiOrmApi.Models;
+using TaxiOrmApi.Models.FabricanteModel;
 using TaxiOrmApi.Repositories.Interfaces;
 
 namespace TaxiOrmApi.Repositories

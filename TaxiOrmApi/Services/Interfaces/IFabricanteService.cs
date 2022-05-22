@@ -1,4 +1,4 @@
-﻿using TaxiOrmApi.Models;
+﻿using TaxiOrmApi.Models.FabricanteModel;
 
 namespace TaxiOrmApi.Services.Interfaces
 {
