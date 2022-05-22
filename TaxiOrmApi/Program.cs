@@ -8,11 +8,15 @@ using TaxiOrmApi.Services;
 using TaxiOrmApi.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
+var configuration = builder.Configuration;
 
 // Add services to the container.
 
 builder.Services.AddControllers();
-builder.Services.AddDbContext<AppDbContext>(options => options.UseInMemoryDatabase("TaxiOrm"));
+builder.Services.AddDbContext<AppDbContext>(options => options
+        .UseNpgsql(configuration.GetConnectionString("TaxiOrmApi"))
+        .UseSnakeCaseNamingConvention()
+    );
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -27,6 +31,8 @@ builder.Services.AddScoped<IServiceBase<Entity>, ServiceBase<Entity, ValidatorBa
 // Specialized Services
 builder.Services.AddScoped<IFabricanteRepository, FabricanteRepository>();
 builder.Services.AddScoped<IFabricanteService, FabricanteService>();
+builder.Services.AddScoped<IModeloRepository, ModeloRepository>();
+builder.Services.AddScoped<IModeloService, ModeloService>();
 
 var app = builder.Build();
 

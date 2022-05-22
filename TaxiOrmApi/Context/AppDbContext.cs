@@ -9,6 +9,19 @@ namespace TaxiOrmApi.Context
         {
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Modelo>()
+                .HasOne(m => m.Fabricante)
+                .WithMany(f => f.Modelos);
+
+            foreach (var relacao in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
+            {
+                relacao.DeleteBehavior = DeleteBehavior.Restrict;
+            }
+        }
+
         public DbSet<Fabricante> Fabricantes { get; set; } = null!;
+        public DbSet<Fabricante> Modelo { get; set; } = null!;
     }
 }

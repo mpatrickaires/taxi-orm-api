@@ -3,17 +3,18 @@ using TaxiOrmApi.Models.Validator;
 
 namespace TaxiOrmApi.Models
 {
-    public class Fabricante : Entity
+    public class Modelo : Entity
     {
         public string Nome { get; set; }
-        public List<Modelo> Modelos { get; set; }
+        public int FabricanteId { get; set; }
+        public Fabricante Fabricante { get; set; }
     }
 
-    public class FabricanteValidator : ValidatorBase<Fabricante>
+    public class ModeloValidator : ValidatorBase<Modelo>
     {
-        public FabricanteValidator()
+        public ModeloValidator()
         {
-            RuleFor(f => f.Nome)
+            RuleFor(m => m.Nome)
                 .NotEmpty().WithMessage(Mensagem.CampoObrigatorio)
                 .MaximumLength(80).WithMessage(Mensagem.TamanhoMaximoString);
         }
