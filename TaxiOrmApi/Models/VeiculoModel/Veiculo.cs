@@ -1,4 +1,5 @@
 ﻿using TaxiOrmApi.Models.ModeloModel;
+using TaxiOrmApi.Models.MotoristaModel;
 
 namespace TaxiOrmApi.Models.VeiculoModel
 {
@@ -8,5 +9,6 @@ namespace TaxiOrmApi.Models.VeiculoModel
         public Modelo Modelo { get; set; }
         public string Renavam { get; set; }
         public int Ano { get; set; }
+        public Motorista Motorista { get; set; }
     }
 }

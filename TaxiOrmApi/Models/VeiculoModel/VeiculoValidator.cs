@@ -24,7 +24,7 @@ namespace TaxiOrmApi.Models.VeiculoModel
             RuleFor(v => v.Renavam)
                 .NotEmpty()
                 .WithMessage(Mensagem.CampoObrigatorio)
-                .Length(11, 11)
+                .FixedLength(11)
                 .WithMessage(Mensagem.TamanhoFixoNumero);
 
             RuleFor(v => v.Ano)

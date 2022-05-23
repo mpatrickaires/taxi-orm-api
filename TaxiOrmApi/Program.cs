@@ -36,6 +36,8 @@ builder.Services.AddScoped<IModeloRepository, ModeloRepository>();
 builder.Services.AddScoped<IModeloService, ModeloService>();
 builder.Services.AddScoped<IVeiculoRepository, VeiculoRepository>();
 builder.Services.AddScoped<IVeiculoService, VeiculoService>();
+builder.Services.AddScoped<IMotoristaRepository, MotoristaRepository>();
+builder.Services.AddScoped<IMotoristaService, MotoristaService>();
 
 // Configuring AutoMapper.
 var mapperConfig = new MapperConfiguration(cfg => cfg.AddMaps(Assembly.GetExecutingAssembly()));

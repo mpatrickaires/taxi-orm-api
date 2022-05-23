@@ -12,7 +12,7 @@ namespace TaxiOrmApi.Controllers
     {
         private IGenericService<TEntityDto> _service;
 
-        protected GenericController(IGenericService<TEntityDto> service)
+        public GenericController(IGenericService<TEntityDto> service)
         {
             _service = service;
         }
