@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 using TaxiOrmApi.Controllers.CustomResponses;
+using TaxiOrmApi.Dtos;
 using TaxiOrmApi.Models;
 using TaxiOrmApi.Services.Interfaces;
 
@@ -8,11 +9,13 @@ namespace TaxiOrmApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ControllerGeneric<TEntity> : ControllerBase where TEntity : Entity
+    public class ControllerGeneric<TEntity, TEntityDto> : ControllerBase
+        where TEntity : Entity
+        where TEntityDto : EntityDto
     {
-        private IServiceBase<TEntity> _service;
+        private IServiceBase<TEntity, TEntityDto> _service;
 
-        protected ControllerGeneric(IServiceBase<TEntity> service)
+        protected ControllerGeneric(IServiceBase<TEntity, TEntityDto> service)
         {
             _service = service;
         }

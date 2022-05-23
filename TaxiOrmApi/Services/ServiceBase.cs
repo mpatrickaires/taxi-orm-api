@@ -1,4 +1,5 @@
 ﻿using System.Linq.Expressions;
+using TaxiOrmApi.Dtos;
 using TaxiOrmApi.Models;
 using TaxiOrmApi.Models.Interfaces;
 using TaxiOrmApi.Repositories.Interfaces;
@@ -6,7 +7,9 @@ using TaxiOrmApi.Services.Interfaces;
 
 namespace TaxiOrmApi.Services
 {
-    public class ServiceBase<TEntity> : IServiceBase<TEntity> where TEntity : Entity
+    public class ServiceBase<TEntity, TEntityDto> : IServiceBase<TEntity, TEntityDto>
+        where TEntity : Entity
+        where TEntityDto : EntityDto
     {
         protected IRepositoryBase<TEntity> _repository;
 
