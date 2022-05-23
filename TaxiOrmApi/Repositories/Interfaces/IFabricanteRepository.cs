@@ -2,7 +2,7 @@
 
 namespace TaxiOrmApi.Repositories.Interfaces
 {
-    public interface IFabricanteRepository : IRepositoryBase<Fabricante>
+    public interface IFabricanteRepository : IGenericRepository<Fabricante>
     {
     }
 }

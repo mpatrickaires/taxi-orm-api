@@ -4,11 +4,11 @@ using TaxiOrmApi.Services.Interfaces;
 
 namespace TaxiOrmApi.Controllers
 {
-    [Route("api/fabricantes")]
+    [Route("api/veiculos")]
     [ApiController]
-    public class FabricantesController : GenericController<FabricanteDto>
+    public class VeiculoController : GenericController<VeiculoDto>
     {
-        public FabricantesController(IFabricanteService service) : base(service)
+        public VeiculoController(IVeiculoService service) : base(service)
         {
         }
     }

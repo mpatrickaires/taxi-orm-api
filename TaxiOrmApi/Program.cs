@@ -23,17 +23,19 @@ builder.Services.AddDbContext<AppDbContext>(options => options
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+//builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<DbContext, AppDbContext>();
 
-builder.Services.AddScoped<IRepositoryBase<Entity>, RepositoryBase<Entity>>();
-builder.Services.AddScoped<IServiceBase<Entity, EntityDto>, ServiceBase<Entity, EntityDto>>();
+builder.Services.AddScoped<IGenericRepository<Entity>, GenericRepository<Entity>>();
+builder.Services.AddScoped<IGenericService<EntityDto>, GenericService<Entity, EntityDto>>();
 
 builder.Services.AddScoped<IFabricanteRepository, FabricanteRepository>();
 builder.Services.AddScoped<IFabricanteService, FabricanteService>();
 builder.Services.AddScoped<IModeloRepository, ModeloRepository>();
 builder.Services.AddScoped<IModeloService, ModeloService>();
+builder.Services.AddScoped<IVeiculoRepository, VeiculoRepository>();
+builder.Services.AddScoped<IVeiculoService, VeiculoService>();
 
 // Configuring AutoMapper.
 var mapperConfig = new MapperConfiguration(cfg => cfg.AddMaps(Assembly.GetExecutingAssembly()));
@@ -45,8 +47,8 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    //app.UseSwagger();
+    //app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();

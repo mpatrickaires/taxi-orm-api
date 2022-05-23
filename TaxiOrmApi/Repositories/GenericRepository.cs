@@ -5,12 +5,12 @@ using TaxiOrmApi.Repositories.Interfaces;
 
 namespace TaxiOrmApi.Repositories
 {
-    public class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where TEntity : Entity
+    public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : Entity
     {
         private DbContext _context;
         protected DbSet<TEntity> Set;
 
-        public RepositoryBase(DbContext context)
+        public GenericRepository(DbContext context)
         {
             _context = context;
             Set = _context.Set<TEntity>();

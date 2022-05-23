@@ -3,7 +3,7 @@ using TaxiOrmApi.Models;
 
 namespace TaxiOrmApi.Repositories.Interfaces
 {
-    public interface IRepositoryBase<TEntity> where TEntity : Entity
+    public interface IGenericRepository<TEntity> where TEntity : Entity
     {
         IEnumerable<TEntity> ObterTodos();
         TEntity ObterPorId(int id);

@@ -2,7 +2,7 @@
 
 namespace TaxiOrmApi.Services.Interfaces
 {
-    public interface IModeloService : IGenericService<ModeloDto>
+    public interface IVeiculoService : IGenericService<VeiculoDto>
     {
     }
 }

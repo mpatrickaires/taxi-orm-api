@@ -2,20 +2,17 @@
 using Microsoft.AspNetCore.Mvc;
 using TaxiOrmApi.Controllers.CustomResponses;
 using TaxiOrmApi.Dtos;
-using TaxiOrmApi.Models;
 using TaxiOrmApi.Services.Interfaces;
 
 namespace TaxiOrmApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ControllerGeneric<TEntity, TEntityDto> : ControllerBase
-        where TEntity : Entity
-        where TEntityDto : EntityDto
+    public class GenericController<TEntityDto> : ControllerBase where TEntityDto : EntityDto
     {
-        private IServiceBase<TEntity, TEntityDto> _service;
+        private IGenericService<TEntityDto> _service;
 
-        protected ControllerGeneric(IServiceBase<TEntity, TEntityDto> service)
+        protected GenericController(IGenericService<TEntityDto> service)
         {
             _service = service;
         }
@@ -41,18 +38,20 @@ namespace TaxiOrmApi.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] TEntity entity)
+        public IActionResult Post([FromBody] TEntityDto entityDto)
         {
-            if (_service.ObterPorId(entity.Id) != null) return CustomResponse.RegistroJaCadastrado();
+            if (_service.ObterPorId(entityDto.Id) != null) return CustomResponse.RegistroJaCadastrado();
 
             try
             {
-                _service.Inserir(entity);
-                return CreatedAtAction(nameof(Post), new { id = entity.Id }, entity);
+                _service.Inserir(entityDto);
+                return CreatedAtAction(nameof(Post), new { id = entityDto.Id }, entityDto);
             }
             catch (ValidationException e)
             {
-                return BadRequest(e.Errors);
+                var errorMessages = e.Errors.Select(e => new { Propriedade = e.PropertyName, Mensagem = e.ErrorMessage });
+
+                return BadRequest(errorMessages);
             }
             catch (Exception e)
             {
@@ -61,20 +60,20 @@ namespace TaxiOrmApi.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] TEntity entity)
+        public IActionResult Put(int id, [FromBody] TEntityDto entityDto)
         {
-            entity.Id = id;
+            entityDto.Id = id;
 
             try
             {
                 if (_service.ObterPorId(id) != null)
                 {
-                    _service.Atualizar(entity);
+                    _service.Atualizar(entityDto);
                     return NoContent();
                 }
 
-                _service.Inserir(entity);
-                return CreatedAtAction(nameof(Put), new { id = entity.Id }, entity);
+                _service.Inserir(entityDto);
+                return CreatedAtAction(nameof(Put), new { id = entityDto.Id }, entityDto);
             }
             catch (ValidationException e)
             {
