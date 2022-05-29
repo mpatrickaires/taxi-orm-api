@@ -1,4 +1,5 @@
-﻿using TaxiOrmApi.Models.TelefoneClienteModel;
+﻿using TaxiOrmApi.Models.SolicitacaoModel;
+using TaxiOrmApi.Models.TelefoneClienteModel;
 
 namespace TaxiOrmApi.Models.ClienteModel
 {
@@ -8,5 +9,6 @@ namespace TaxiOrmApi.Models.ClienteModel
         public string Cpf { get; set; }
         public DateTime DataCadastro { get; set; }
         public List<TelefoneCliente> Telefones { get; set; }
+        public List<Solicitacao> Solicitacoes { get; set; }
     }
 }

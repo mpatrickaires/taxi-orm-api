@@ -53,6 +53,9 @@ builder.Services.AddScoped<ITelefoneClienteService, TelefoneClienteService>();
 builder.Services.AddScoped<ILocalizacaoRepository, LocalizacaoRepository>();
 builder.Services.AddScoped<ILocalizacaoService, LocalizacaoService>();
 
+builder.Services.AddScoped<ISolicitacaoRepository, SolicitacaoRepository>();
+builder.Services.AddScoped<ISolicitacaoService, SolicitacaoService>();
+
 
 // Configuring AutoMapper.
 var mapperConfig = new MapperConfiguration(cfg =>

@@ -9,5 +9,7 @@
         public string Logradouro { get; set; }
         public string Numero { get; set; }
         public string Complemento { get; set; }
+        public List<SolicitacaoDto> SolicitacoesOrigem { get; set; }
+        public List<SolicitacaoDto> SolicitacoesDestino { get; set; }
     }
 }

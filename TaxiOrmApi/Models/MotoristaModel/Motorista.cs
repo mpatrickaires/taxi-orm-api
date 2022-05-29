@@ -1,4 +1,5 @@
-﻿using TaxiOrmApi.Models.VeiculoModel;
+﻿using TaxiOrmApi.Models.SolicitacaoModel;
+using TaxiOrmApi.Models.VeiculoModel;
 
 namespace TaxiOrmApi.Models.MotoristaModel
 {
@@ -9,5 +10,6 @@ namespace TaxiOrmApi.Models.MotoristaModel
         public string NumeroCnh { get; set; }
         public int? VeiculoId { get; set; }
         public Veiculo Veiculo { get; set; }
+        public List<Solicitacao> Solicitacoes { get; set; }
     }
 }

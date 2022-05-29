@@ -9,5 +9,6 @@ namespace TaxiOrmApi.Dtos
         public string NumeroCnh { get; set; }
         public int? VeiculoId { get; set; }
         public Veiculo Veiculo { get; set; }
+        public List<SolicitacaoDto> Solicitacoes { get; set; }
     }
 }

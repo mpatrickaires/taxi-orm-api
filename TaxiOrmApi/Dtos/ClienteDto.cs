@@ -6,5 +6,6 @@
         public string Cpf { get; set; }
         public DateTime DataCadastro { get; set; }
         public List<TelefoneClienteDto> Telefones { get; set; }
+        public List<SolicitacaoDto> Solicitacoes { get; set; }
     }
 }

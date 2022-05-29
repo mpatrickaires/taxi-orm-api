@@ -5,6 +5,7 @@ using TaxiOrmApi.Models.FabricanteModel;
 using TaxiOrmApi.Models.LocalizacaoModel;
 using TaxiOrmApi.Models.ModeloModel;
 using TaxiOrmApi.Models.MotoristaModel;
+using TaxiOrmApi.Models.SolicitacaoModel;
 using TaxiOrmApi.Models.TelefoneClienteModel;
 using TaxiOrmApi.Models.VeiculoModel;
 
@@ -33,5 +34,6 @@ namespace TaxiOrmApi.Context
         public DbSet<Cliente> Cliente { get; set; } = null!;
         public DbSet<TelefoneCliente> TelefoneCliente { get; set; } = null!;
         public DbSet<Localizacao> Localizacao { get; set; } = null!;
+        public DbSet<Solicitacao> Solicitacao { get; set; } = null!;
     }
 }

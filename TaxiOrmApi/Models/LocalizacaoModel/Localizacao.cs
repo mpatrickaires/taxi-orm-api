@@ -1,4 +1,6 @@
-﻿namespace TaxiOrmApi.Models.LocalizacaoModel
+﻿using TaxiOrmApi.Models.SolicitacaoModel;
+
+namespace TaxiOrmApi.Models.LocalizacaoModel
 {
     public partial class Localizacao : Entity
     {
@@ -9,5 +11,7 @@
         public string Logradouro { get; set; }
         public string Numero { get; set; }
         public string Complemento { get; set; }
+        public List<Solicitacao> SolicitacoesOrigem { get; set; }
+        public List<Solicitacao> SolicitacoesDestino { get; set; }
     }
 }
