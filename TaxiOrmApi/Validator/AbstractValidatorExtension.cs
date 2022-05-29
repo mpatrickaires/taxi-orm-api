@@ -6,8 +6,12 @@ namespace TaxiOrmApi.Validator
     {
         public static IRuleBuilderOptions<T, string> FixedLength<T>(this IRuleBuilderOptions<T, string> abstractValidator, int length)
         {
-            abstractValidator.Length(length, length);
-            return abstractValidator;
+            return abstractValidator.Length(length, length);
+        }
+
+        public static IRuleBuilderOptions<T, string> FixedLength<T>(this IRuleBuilderInitial<T, string> abstractValidator, int length)
+        {
+            return abstractValidator.Length(length, length);
         }
     }
 }

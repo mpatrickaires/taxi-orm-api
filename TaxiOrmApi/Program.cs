@@ -50,9 +50,14 @@ builder.Services.AddScoped<IClienteService, ClienteService>();
 builder.Services.AddScoped<ITelefoneClienteRepository, TelefoneClienteRepository>();
 builder.Services.AddScoped<ITelefoneClienteService, TelefoneClienteService>();
 
+builder.Services.AddScoped<ILocalizacaoRepository, LocalizacaoRepository>();
+builder.Services.AddScoped<ILocalizacaoService, LocalizacaoService>();
+
 
 // Configuring AutoMapper.
-var mapperConfig = new MapperConfiguration(cfg => cfg.AddMaps(Assembly.GetExecutingAssembly()));
+var mapperConfig = new MapperConfiguration(cfg =>
+    cfg.AddMaps(Assembly.GetExecutingAssembly())
+);
 var mapper = mapperConfig.CreateMapper();
 builder.Services.AddSingleton(mapper);
 
