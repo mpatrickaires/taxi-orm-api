@@ -34,14 +34,22 @@ builder.Services.AddScoped<IGenericService<EntityDto>, GenericService<Entity, En
 
 builder.Services.AddScoped<IFabricanteRepository, FabricanteRepository>();
 builder.Services.AddScoped<IFabricanteService, FabricanteService>();
+
 builder.Services.AddScoped<IModeloRepository, ModeloRepository>();
 builder.Services.AddScoped<IModeloService, ModeloService>();
+
 builder.Services.AddScoped<IVeiculoRepository, VeiculoRepository>();
 builder.Services.AddScoped<IVeiculoService, VeiculoService>();
+
 builder.Services.AddScoped<IMotoristaRepository, MotoristaRepository>();
 builder.Services.AddScoped<IMotoristaService, MotoristaService>();
+
 builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
 builder.Services.AddScoped<IClienteService, ClienteService>();
+
+builder.Services.AddScoped<ITelefoneClienteRepository, TelefoneClienteRepository>();
+builder.Services.AddScoped<ITelefoneClienteService, TelefoneClienteService>();
+
 
 // Configuring AutoMapper.
 var mapperConfig = new MapperConfiguration(cfg => cfg.AddMaps(Assembly.GetExecutingAssembly()));

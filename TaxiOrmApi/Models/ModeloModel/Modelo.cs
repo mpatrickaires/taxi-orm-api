@@ -1,4 +1,5 @@
 ﻿using TaxiOrmApi.Models.FabricanteModel;
+using TaxiOrmApi.Models.VeiculoModel;
 
 namespace TaxiOrmApi.Models.ModeloModel
 {
@@ -7,5 +8,6 @@ namespace TaxiOrmApi.Models.ModeloModel
         public string Nome { get; set; }
         public int FabricanteId { get; set; }
         public Fabricante Fabricante { get; set; }
+        public List<Veiculo> Veiculos { get; set; }
     }
 }

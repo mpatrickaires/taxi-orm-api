@@ -29,7 +29,7 @@ namespace TaxiOrmApi.Context.EntityConfigurations
 
             builder
                 .HasOne(v => v.Modelo)
-                .WithMany();
+                .WithMany(m => m.Veiculos);
         }
     }
 }

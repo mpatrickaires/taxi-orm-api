@@ -8,5 +8,6 @@ namespace TaxiOrmApi.Dtos
         public Modelo Modelo { get; set; }
         public string Renavam { get; set; }
         public int Ano { get; set; }
+        public MotoristaDto Motorista { get; set; }
     }
 }

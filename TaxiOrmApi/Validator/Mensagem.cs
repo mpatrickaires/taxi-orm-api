@@ -2,9 +2,13 @@
 {
     public static class Mensagem
     {
-        public static string CampoObrigatorio => "O campo {PropertyName} é obrigatório";
-        public static string TamanhoMaximoString => "O campo {PropertyName} não pode exceder {MaxLength} caracteres";
+        private static string Campo => "O campo {PropertyName}";
+        private static string TamanhoMaximo => $"{Campo} não pode exceder {{MaxLength}}";
 
-        public static string TamanhoFixoNumero => "O campo {PropertyName} deve possuir um tamanho fixo de {MaxLength} números";
+        public static string CampoObrigatorio => $"{Campo} é obrigatório";
+        public static string TamanhoMaximoString => $"{TamanhoMaximo} caracteres";
+        public static string TamanhoMaximoNumero => $"{TamanhoMaximo} números";
+
+        public static string TamanhoFixoNumero => $"{TamanhoMaximo} números";
     }
 }
