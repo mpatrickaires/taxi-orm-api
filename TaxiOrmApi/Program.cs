@@ -16,6 +16,8 @@ builder.Services.AddControllers()
         options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
 );
 
+AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+
 builder.Services.AddDbContext<AppDbContext>(options => options
         .UseNpgsql(builder.Configuration.GetConnectionString("TaxiOrmApi"))
         .UseSnakeCaseNamingConvention()
@@ -38,6 +40,8 @@ builder.Services.AddScoped<IVeiculoRepository, VeiculoRepository>();
 builder.Services.AddScoped<IVeiculoService, VeiculoService>();
 builder.Services.AddScoped<IMotoristaRepository, MotoristaRepository>();
 builder.Services.AddScoped<IMotoristaService, MotoristaService>();
+builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
+builder.Services.AddScoped<IClienteService, ClienteService>();
 
 // Configuring AutoMapper.
 var mapperConfig = new MapperConfiguration(cfg => cfg.AddMaps(Assembly.GetExecutingAssembly()));

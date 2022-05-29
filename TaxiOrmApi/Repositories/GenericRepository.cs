@@ -33,7 +33,7 @@ namespace TaxiOrmApi.Repositories
 
         public virtual IEnumerable<TEntity> ObterTodosPorExpressao(Expression<Func<TEntity, bool>> expressao)
         {
-            return Set.AsNoTracking().Where(expressao);
+            return Set.AsNoTracking().Where(expressao).AsEnumerable();
         }
 
         public virtual void Salvar()

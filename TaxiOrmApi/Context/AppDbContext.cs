@@ -1,6 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Reflection;
+using TaxiOrmApi.Models.ClienteModel;
 using TaxiOrmApi.Models.FabricanteModel;
+using TaxiOrmApi.Models.ModeloModel;
+using TaxiOrmApi.Models.MotoristaModel;
+using TaxiOrmApi.Models.VeiculoModel;
 
 namespace TaxiOrmApi.Context
 {
@@ -20,7 +24,10 @@ namespace TaxiOrmApi.Context
             }
         }
 
-        public DbSet<Fabricante> Fabricantes { get; set; } = null!;
-        public DbSet<Fabricante> Modelo { get; set; } = null!;
+        public DbSet<Fabricante> Fabricante { get; set; } = null!;
+        public DbSet<Modelo> Modelo { get; set; } = null!;
+        public DbSet<Veiculo> Veiculo { get; set; } = null!;
+        public DbSet<Motorista> Motorista { get; set; } = null!;
+        public DbSet<Cliente> Cliente { get; set; } = null!;
     }
 }
